@@ -1,37 +1,27 @@
 
 import React, { useState } from 'react';
-import './App.css';
+import styles from './App.module.css';
 
-//Array
-let myArray= ['Kathmandu', 'Pokhara', 'Illam','Mustang']
-//String
-const String='Nepali'
-function App() {
-  const [Clicked, setClicked] = useState( );
+const Counter = ({ count }) => {
+  const [currentCount, setCurrentCount] = useState(0);
 
-  const handleClick = () => {
-    setClicked(!Clicked);
+  const increment = () => {
+    setCurrentCount(currentCount + 1);
+  };
+
+  const decrement = () => {
+    setCurrentCount(currentCount > 0 ? currentCount - 1 : currentCount);
   };
 
   return (
-    <div className={`box ${Clicked ? 'clicked' : ''}`}>
-      <h1>NEPAL</h1>
-      <h2>Nepal's rich cultural and natural heritage makes it a unique and fascinating country, 
-        attracting travelers, trekkers, and adventurers from around the world. The hospitality and warmth of the Nepali people contribute to the country's charm.
-
-</h2>
-<ol>
-  <h2>Places to visit in Nepal</h2>
-  <li className="list">{myArray[0]}</li>
-  <li className="list">{myArray[1]}</li>
-  <li className="list">{myArray[2]}</li>
-  <li className="list">{myArray[3]}</li>
-</ol>
-<p className="Paragraph">they speak {String}</p>
-      <p>Click below  </p>
-      <button onClick={handleClick}>Toggle</button>
+    <div className={styles.appContainer}>
+      <h2>Current Count: {currentCount}</h2>
+      <button onClick={increment}>Increment</button>
+      {currentCount > 0 ? (
+        <button onClick={decrement}>Decrement</button>
+      ) : null}
     </div>
   );
-}
+};
 
-export default App;
+export default Counter;
