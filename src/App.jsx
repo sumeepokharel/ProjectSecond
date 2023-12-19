@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 
-const Counter = ({ count }) => {
+const Counter = ({ }) => {
   const [currentCount, setCurrentCount] = useState(0);
 
   const increment = () => {
